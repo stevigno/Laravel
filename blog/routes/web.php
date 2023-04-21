@@ -21,6 +21,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('structures', function () {
+    return view('structures');
+});
+
 Route::get('test', function(){
     return view('test')->withTitle('Laravel');
 });

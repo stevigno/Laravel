@@ -5,12 +5,7 @@
 <div class="row">
 
     <div class="col-lg-3">
-      <div class="my-4">Catégories</div>
-      <div class="list-group">
-        <a href="#" class="list-group-item active">Laravel</a>
-        <a href="#" class="list-group-item">PHP</a>
-        <a href="#" class="list-group-item">Javascript</a>
-      </div>
+      @include('includes.sidebar')
     </div>
     <!-- /.col-lg-3 -->
 
