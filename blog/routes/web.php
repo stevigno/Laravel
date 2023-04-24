@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{
     ArticleController,
+    RegisterController,
     UserController
 };
 
@@ -21,7 +22,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('structures', function () {
+Route::get('register', [RegisterController::class, 'index'])->name('register');
+Route::get('profile', [UserController::class, 'profile'])->name('user.profile');
+
+Route::post('register', [RegisterController::class, 'register'])->name('post.register');
+
+Route::resource('articles', ArticleController::class);
+/* Route::get('structures', function () {
     return view('structures');
 });
 
@@ -30,8 +37,5 @@ Route::get('test', function(){
 });
 Route::get('test2', function(){
     return view('test2')->withTitle('php');
-});
+}); */
 
-Route::get('profile', [UserController::class, 'profile'])->name('user.profile');
-
-Route::resource('articles', ArticleController::class);
