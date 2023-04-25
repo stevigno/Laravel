@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{
     ArticleController,
+    LoginController,
     RegisterController,
     UserController
 };
@@ -24,8 +25,10 @@ Route::get('/', function () {
 
 Route::get('register', [RegisterController::class, 'index'])->name('register');
 Route::get('profile', [UserController::class, 'profile'])->name('user.profile');
+Route::get('login', [LoginController::class, 'index'])->name('login');
 
 Route::post('register', [RegisterController::class, 'register'])->name('post.register');
+Route::post('login', [LoginController::class, 'login'])->name('post.login');
 
 Route::resource('articles', ArticleController::class);
 /* Route::get('structures', function () {
