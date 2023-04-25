@@ -23,11 +23,11 @@
 
       <div class="card card-outline-secondary my-4">
         <div class="card-header">
-          Connexion
+          J'ai oublié mon mot de passe
         </div>
         <div class="card-body">
           
-          <form action="{{ route('post.login') }}" method="post">
+          <form action="{{ route('post.forgot') }}" method="post">
 
             @csrf
 
@@ -39,24 +39,12 @@
               @enderror
             </div>
 
-            <div class="form-group">
-              <label for="password">Mot de passe</label>
-              <input type="password" name="password" class="form-control">
-              @error('password')
-                <div class="error">{{ $message }}</div>
-              @enderror
-            </div>
-
-            <div class="form-group form-check">
-              <input type="checkbox" class="form-check-input" id="remember" name="remember" value="1">
-              <label class="form-check-label" for="remember">Se souvenir de moi</label>
-            </div>
-            <button type="submit" class="btn btn-primary">Connexion</button>
+            <button type="submit" class="btn btn-primary">Envoyer</button>
           </form>
 
           <p><a href="{{ route('forgot') }}">J'ai oublié mon mot de passe</a></p>
 
-          <p><a href="{{ route('register') }}">Je n'ai pas de compte</a></p> 
+          <p><a href="{{ route('register') }}">Je n'ai pas de compte</a></p>
 
         </div>
       </div>
