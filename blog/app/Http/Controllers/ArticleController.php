@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Article;
 
 class ArticleController extends Controller
 {
@@ -11,7 +12,15 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        return 'liste des article';
+       $articles =Article::orderByDesc('id')->get();
+
+       $data = [
+        'title'=>'Les articles du blog - '.config('app.name'),
+        'description'=>'Retrouvez tous les articles de '.config('app.name'),
+        'articles'=>$articles,
+    ];
+
+    return view('article.index', $data);
     }
 
     /**
