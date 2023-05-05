@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Article;
+use App\Models\{
+  Article, Category  
+};
 use Illuminate\Support\Str;
 
 class ArticleController extends Controller
@@ -30,7 +32,13 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        return 'formulaire de creation';
+        $categories = Category::get();
+        $data = [
+            'title' => $description = 'Ajouter un nouvel article',
+            'description'=>$description,
+            'categories'=>$categories,
+        ];
+        return view('article.create', $data);
     }
 
     /**
@@ -38,7 +46,14 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        /* $validatedData = $request->validated();
+        $validatedData['category_id'] = request('category', null);
+
+        Auth::user()->articles()->create($validatedData);
+
+        $success = 'Article ajouté';
+
+        return back()->withSuccess($success); */
     }
 
     /**
