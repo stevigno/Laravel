@@ -14,7 +14,7 @@
       <div class="card mt-4">
         
         <div class="card-body">
-          <h2 class="card-title"><a href="{{route('articles.show', ['article'=>$article->id])}}">{{ $article->title }}</a></h2>
+          <h2 class="card-title"><a href="{{route('articles.show', ['article'=>$article->slug])}}">{{ $article->title }}</a></h2>
           <p class="card-text">{{Str::limit($article->content, 50) }}</p>
           
           <span class="auhtor">Par <a href="{{ route('user.profile', ['user'=>$article->user->id]) }}">{{ $article->user->name }}</a> inscrit le {{ $article->user->created_at->format('d/m/y') }}</span> <br>
