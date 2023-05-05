@@ -27,7 +27,7 @@ Route::get('/', function () {
 });
 
 Route::get('register', [RegisterController::class, 'index'])->name('register');
-Route::get('profile', [UserController::class, 'profile'])->name('user.profile');
+Route::get('profile/{user}', [UserController::class, 'profile'])->name('user.profile');
 Route::get('login', [LoginController::class, 'index'])->name('login');
 Route::get('logout', [LogoutController::class, 'logout'])->name('logout');
 Route::get('forgot', [ForgotController::class, 'index'])->name('forgot');

@@ -4,15 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Article;
+use Illuminate\Support\Str;
 
 class ArticleController extends Controller
 {
+    protected $perPage = 5;
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-       $articles =Article::orderByDesc('id')->get();
+       $articles =Article::orderByDesc('id')->paginate($this->perPage);
 
        $data = [
         'title'=>'Les articles du blog - '.config('app.name'),
@@ -42,9 +44,15 @@ class ArticleController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Article $article)
     {
-        return 'affiches les details de article avec $id' .$id;
+        $data = [
+            'title'=>$article->title.' - '.config('app.name'),
+            'description'=>$article->title.'. '.Str::words($article->content, 10),
+            'article'=>$article,
+            'comments'=>$article->comments()->orderByDesc('created_at')->get(),
+        ];
+        return view('article.show', $data);
     }
 
     /**

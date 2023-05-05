@@ -17,12 +17,16 @@
           <h2 class="card-title"><a href="{{route('articles.show', ['article'=>$article->id])}}">{{ $article->title }}</a></h2>
           <p class="card-text">{{Str::limit($article->content, 50) }}</p>
           
-          <span class="auhtor">Par <a href="">Hamid</a></span> <br>
-          <span class="time">Il y'a 1 heure</span>
+          <span class="auhtor">Par <a href="{{ route('user.profile', ['user'=>$article->user->id]) }}">{{ $article->user->name }}</a> inscrit le {{ $article->user->created_at->format('d/m/y') }}</span> <br>
+          <span class="time">Posté il y'a {{ $article->created_at->diffForHumans() }}</span>
         </div>
       </div>
     @endforeach
       <!-- /.card -->
+
+      <div class="pagination mt-5">
+        {{ $articles->links() }}
+      </div>
 
       {{-- <div class="card card-outline-secondary my-4">
         <div class="card-header">
